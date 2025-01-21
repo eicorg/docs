@@ -7,6 +7,7 @@
 ```
 .
 └──ioc-<system name>
+    ├── configure
     ├── <system name>App
     ├── iocBoot
     ├── Makefile
@@ -79,8 +80,8 @@ O.*/
 
 - Thus the build script (or GitHub action) will do the following:
 	- Run make for the source IOC code after downloading it from GitHub.
-	- Copy IOC executable to a central location
-	- Copy `iocBoot` with `db` and `dbd` directories to a central location separated by the user name.
+	- Copy the IOC executable to a central location
+	- Copy `iocBoot` directory to a central location separated by the user name.
 	- Create a `config` file to be used with the manage-iocs utility under the `iocBoot/<ioc name>` directory.
 	- Copy the OPI to a central location separated by the user name
 	- Now you should be able to install/start/stop the IOC using manage-iocs.
