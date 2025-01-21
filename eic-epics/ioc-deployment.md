@@ -1,6 +1,6 @@
 ## GitHub IOC Repository Structure
 
-- On GitHub, under the `eicorg` account, the IOCs are hosted under the controls team. Here is the path: https://github.com/orgs/eicorg/teams/controls/repositories.
+- On GitHub, under the `eicorg` account, the IOCs are hosted under the controls team. Here is the path: https://github.com/orgs/eicorg/teams/epics/repositories.
 - Any IOC repository name has the pattern: `ioc-<system name>`.
 
 - Before creating/pushing any IOC repository, ensure that you have the following directory structure:
