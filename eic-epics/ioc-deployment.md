@@ -56,34 +56,23 @@ O.*/
 
 ## EPICS IOC Deployment Plan
 
-- EPICS IOC apps, iocBoot and OPIs are hosted on GitHub. They are released and deployed through GitHub actions or user interface (web or GUI) only, so that we have all releases synchronized with GitHub. Until GitHub actions or user interface is set up, we need to do it manually.
+- EPICS IOC apps, `iocBoot` and `OPIs` are hosted on GitHub. They are released and deployed through GitHub CI/CD or web interface only, so that we have all releases synchronized with GitHub. Until GitHub CI/CD or web interface is set up, we need to do it manually.
 
-- On the EIC VMs, the central NFS directory for deployment is under `/eic/release/epics`. Under this NFS mounted central directory, we have
+- For local deployment, create another central directory (say called `modules`) to have all `db` and `dbd` files (under each individual module) that are not part of EPICS installation. Now set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). This way you do not need to copy the `bd` and `dbd` file for each `iocBoot` instance.
+
+- On EIC VM, the central NFS directory for deployment is under `/eic/release/epics`. Under this NFS mounted central directory, we have
 
 ```
-.
-└── epics
-    ├── ioc
-    ├── iocBoot
-    └── opi
+release
+ └── epics
+     ├── modules
+     ├── iocs (aka iocBoot)
+     └── opi
 ```
 
-- Inside, the `iocBoot` and `opi` directories, new directories can be created that reflect the tree structure of the users or group.
+- Inside, the `iocs` and `opi` directories, new directories can be created that reflect the tree structure of the users or group. `iocs` is same as `iocBoot`. Here we just put each iocBoot instances.
 
-- For any EPICS IOC app development, the users might want to save the local source repository under `/eic/source/epics`. For each IOC app, i) IOC app source code, ii) iocBoot and iii) OPI files can be kept under one repository. However, the most important thing is to keep the local repository synchronized with the GitHub repository.
+- The IOCs are started/stopped/monitored using the `manage-iocs` utility or an user interface (on top of `manage-iocs`).
 
-- The IOCs are be started/stopped/monitored using the `manage-iocs` utility or an user interface (on top of manage-iocs).
+- Check the deployed IOC examples under `/eic/release/epics/` and also the corresponding eicorg GitHub repositories for further details.
 
-- Because we maintain an independent cental `iocBoot` directory (which is not next to the apps directory) as shown in the above diagram, we need to copy the auto-generated `db` and `dbd` directories inside `iocBoot/<ioc name>` directory. Also, we need to set the `$TOP` variable inside `envPaths` to point to the `iocBoot/<ioc name>` directory. Similarly, we need to copy the binary IOC executable to a central directory (here `ioc`). All of these should be made part of the deployment script. This way each user will have their own `iocBoot/<ioc name>` directory, but they will be using the same IOC executable. Thus each user/group will have the capability to modify the database file on the fly to fit their needs. `<ioc name >` in the `iocBoot/<ioc name>` should contain a unique name like `<user_name-hardware_name>`.
-
-- The `iocBoot/<ioc name>` directory will contain a `config` file for the `manage-iocs` utility.
-
-- Thus the build script (or GitHub action) will do the following:
-	- Run make for the source IOC code after downloading it from GitHub.
-	- Copy the IOC executable to a central location
-	- Copy `iocBoot` directory to a central location separated by the user name.
-	- Create a `config` file to be used with the manage-iocs utility under the `iocBoot/<ioc name>` directory.
-	- Copy the OPI to a central location separated by the user name
-	- Now you should be able to install/start/stop the IOC using manage-iocs.
-
-- A later version of iocBoot directory inside the IOC repository (on GitHub) will contain a version of cookiecutter (Jinja) compatible `st.cmd` and `config` files (for manage-iocs) so that it can be deployed using web/GUI for each user.
