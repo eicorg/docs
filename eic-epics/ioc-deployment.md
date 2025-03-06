@@ -57,9 +57,9 @@ O.*/
 
 - EPICS IOC apps, `iocBoot` and `OPIs` are hosted on GitHub. They are released and deployed through GitHub CI/CD or web interface only, so that we have all releases synchronized with GitHub. Until GitHub CI/CD or web interface is set up, we need to do it manually.
 
-- For the deployment, we created a central directory (called `modules`) to have all `db` and `dbd` files (under each individual module) that are not part of EPICS installation.
+- For the deployment, we created a central directory (called `modules`) to have all IOC apps or modules that are not part of EPICS installation.
 
-- For each IOC instances, we need to set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). 
+- For each deployed IOC instances, we need to set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). We also need a `config` file for the `manage-iocs` utility.
 
 - On EIC VM, the central NFS directory for deployment is under `/eic/release/epics`. Under this NFS mounted central directory, we have
 
@@ -72,6 +72,8 @@ release
 ```
 
 - Inside, the `iocs` and `opi` directories, new directories can be created that reflect the tree structure of the users or group. `iocs` is same as `iocBoot`. Here we just put each iocBoot instances. Both `iocs` and `opi` are hosted on GitHub at `https://github.com/eicorg/iocs` and `https://github.com/eicorg/opi` under the team controls/epics. The idea is individual IOC module or apps repository can have template iocBoot and OPI files. But all production iocBoot instances and OPI files are under version control from separate mono repositories. 
+
+- If non-NFS deployment is preferred, use the `/epics/iocs` directory.
 
 - While we are using monorepo for `iocs` (production IOC instances) and OPI directories, all homegrown IOC apps have their own individual repository. Thus `modules` is a polyrepo.
 
