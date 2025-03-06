@@ -58,7 +58,7 @@ O.*/
 
 - EPICS IOC apps, `iocBoot` and `OPIs` are hosted on GitHub. They are released and deployed through GitHub CI/CD or web interface only, so that we have all releases synchronized with GitHub. Until GitHub CI/CD or web interface is set up, we need to do it manually.
 
-- For local deployment, create another central directory (say called `modules`) to have all `db` and `dbd` files (under each individual module) that are not part of EPICS installation. Now set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). This way you do not need to copy the `bd` and `dbd` file for each `iocBoot` instance.
+- For the deployment, we created a central directory (called `modules`) to have all `db` and `dbd` files (under each individual module) that are not part of EPICS installation. We just need to set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). 
 
 - On EIC VM, the central NFS directory for deployment is under `/eic/release/epics`. Under this NFS mounted central directory, we have
 
@@ -70,9 +70,11 @@ release
      └── opi
 ```
 
-- Inside, the `iocs` and `opi` directories, new directories can be created that reflect the tree structure of the users or group. `iocs` is same as `iocBoot`. Here we just put each iocBoot instances.
+- Inside, the `iocs` and `opi` directories, new directories can be created that reflect the tree structure of the users or group. `iocs` is same as `iocBoot`. Here we just put each iocBoot instances. Both `iocs` and `opi` are hosted on GitHub at `https://github.com/eicorg/iocs` and `https://github.com/eicorg/opi` under the team controls/epics . 
 
 - The IOCs are started/stopped/monitored using the `manage-iocs` utility or an user interface (on top of `manage-iocs`).
+
+- `manage-iocs` utility is configured to control IOCs under two locations `/epics/iocs` (local to the host) and `/eic/release/epics` (NFS mounted).
 
 - Check the deployed IOC examples under `/eic/release/epics/` and also the corresponding eicorg GitHub repositories for further details.
 
