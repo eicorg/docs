@@ -16,7 +16,7 @@
 
 - Put all source code for the IOC inside `<system name>App` and startup files with OPIs under `iocBoot`.
 
-- iocBoot can have template IOC confiration files and prototype OPI files.
+- iocBoot can have template IOC configuration files and prototype OPI files.
 
 - A later version of iocBoot directory inside the IOC repository (on GitHub) can contain a version of cookiecutter (Jinja) compatible `st.cmd` and `config` files (for manage-iocs) so that it can be deployed using web/GUI for each user.
 
@@ -59,9 +59,9 @@ O.*/
 
 - For the deployment, we created a central directory (called `modules`) to have all IOC apps or modules that are not part of EPICS installation.
 
-- For each deployed IOC instances, we need to set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). We also need a `config` file for the `manage-iocs` utility.
+- For each deployed IOC instance, we need to set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). We also need a `config` file for the `manage-iocs` utility.
 
-- On EIC VM, the central NFS directory for deployment is under `/eic/release/epics`. Under this NFS mounted central directory, we have
+- On EIC VM, the central NFS directory for deployment is under `/eic/release/epics`. Under this NFS-mounted central directory, we have
 
 ```
 release
@@ -71,7 +71,7 @@ release
      └── opi
 ```
 
-- Inside, the `iocs` and `opi` directories, new directories can be created that reflect the tree structure of the users or group. `iocs` is same as `iocBoot`. Here we just put each iocBoot instances. Both `iocs` and `opi` are hosted on GitHub at `https://github.com/eicorg/iocs` and `https://github.com/eicorg/opi` under the team controls/epics. The idea is individual IOC module or apps repository can have template iocBoot and OPI files. But all production iocBoot instances and OPI files are under version control from separate mono repositories. 
+- Inside the `iocs` and `opi` directories, new directories can be created that reflect the tree structure of the users or group. `iocs` is same as `iocBoot`. Here we just put each iocBoot instances. Both `iocs` and `opi` are hosted on GitHub at `https://github.com/eicorg/iocs` and `https://github.com/eicorg/opi` under the team controls/epics. The idea is individual IOC module or apps repository can have template iocBoot and OPI files. But all production iocBoot instances and OPI files are under version control from separate mono repositories. 
 
 - If non-NFS deployment is preferred, use the `/epics/iocs` directory.
 
