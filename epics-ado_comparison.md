@@ -1,3 +1,6 @@
+# Difference between EPICS and ADO infrastructures
+Created by Andrei Sukhanov.
+
 ### Naming convention
 - EPICS: Flat.<br>
 Disadvantage: The flat naming for large systems requires strict policy for naming convention and additional tools like ChannelFinder.
@@ -23,7 +26,8 @@ The cnslookup is integral part of the ADO framework. There is no need for tools 
 Both Channel Access and PVAccess protocols are custom. The PVAccess is very complicated. Due to its complexity, the pure-Python implementation of the PVAccess still does not exist.
 PVaccess supports RPC-type requests, this functionality does not seem to be very demanding as it can be implemented using standard requests.
 - ADO:<br>
-The communication protocol is based on RPC standard, and it is using very small subset of the RPC features. The protocol is less complex as EPICS. There exist pure-Python and Java implementations of the protocol. Most of the recent ADO managers are written in Python.
+The communication protocol is based on RPC standard, and it is using very small subset of the RPC features. The protocol is less complex as EPICS. There exist pure-Python and Java implementations of the protocol. Most of the recent ADO managers are written in Python.<br>
+The RPC relies on rpcbind system service. For systems where rpcbind is prohibited the internal program ID resolution is provided.
 
 ### Precursors for secure access control
 - EPICS:<br>
@@ -65,5 +69,12 @@ There is no central database in EPICS.
 - ADO:<br>
 The database is core component of the ADO infrastructure.
 The database is currently SYBASE, which is planned to be replaced by PostgreSQL or MySQL.
- 
+
+
+### Set History
+Keeping track of who and when modified sensitive parameters.
+- ADO:
+Modification of all sensitive parameters is recorded and information on who and when have modified is tored in the database. It is part of the client API. This feature is very useful for system and component recovery.
+
+
 
