@@ -50,17 +50,20 @@ The IOC is build with an internal shell and a state machine. They seems to be un
 - EPICS:<br>
 Archiver Apliances. Set of custom tools.
 - ADO:<br>
-Set of custom tools. Provides similar functionality as Archiver Apliances. The data extraction tool is Java-based DataServer.<br>
-Disadvantage: Data ingestion tool is based on oudated SDDS file format.
+Set of custom tools and scripts. Provides similar functionality as Archiver Apliances. The data extraction tool is Java-based DataServer.<br>
+Typical data volumes, Run24: **280 GB of compressed data per day, 300 TB per year**.<br>
+Retrieval time for years-old data from long term data storage: 1-2 hours.
+Disadvantage1: Data ingestion processes are based on outdated SDDS file format.
+Disadvantage2: There is no data storage policy, all logged data a get stored in long term storage system. 
 - Alternative:<br>
-Consider to employ off-the-shelf time series database like **TDengine or InfluxDB**.
+Consider to deploy an off-the-shelf time series database like **TDengine or InfluxDB**.
 
 ### GUI
 - EPICS:<br>
 Advantage: The CS Studio make it possible to create impressive GUI. 
-Disadvantage: There is no simple tools like Gpm.
+Disadvantage: There is no simple tools like Gpm, adoPet, Pet.
 - ADO:
-Disadvantage. The Pet interface is very limited.
+Disadvantage. The Pet interface is very limiting.
 The impressive GUI can be created using Python and QT, but this requires basic Qt expertise.
  
 ### Central Database.
@@ -74,7 +77,12 @@ The database is currently SYBASE, which is planned to be replaced by PostgreSQL 
 ### Set History
 Keeping track of who and when modified sensitive parameters.
 - ADO:
-Modification of all sensitive parameters is recorded and information on who and when have modified is tored in the database. It is part of the client API. This feature is very useful for system and component recovery.
+Modification of all sensitive parameters is recorded and information on who and when have modified is stored in the database. It is part of the client API. This feature is very useful for system and device recovery.
+
+### Parameter cache
+When restarted, each device recovers to previous state.
+- ADO:
+Every time the critical parameter gets modified, its value is written to a file (parameter cache). When device get restarted, all critical parameters are recovered from the file. The critical parameters have special feature bit.
 
 
 
