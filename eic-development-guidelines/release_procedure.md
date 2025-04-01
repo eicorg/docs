@@ -7,34 +7,7 @@ It is intended to provide a clean, standardized, and intuitive foundation for ma
 ---
 
 ## 📁 Directory Structure
-
-  /eic/opt/ 
-  ├── releases/ 
-  │ ├── development/ 
-  │ │ ├── bin/ 
-  │ │ ├── scripts/ 
-  │ │ ├── config/ 
-  │ │ └── fallback/ 
-  │ ├── commissioning/ 
-  │ │ ├── bin/ 
-  │ │ ├── scripts/ 
-  │ │ └── config/ 
-  │ ├── operational/ 
-  │ │ ├── bin/ 
-  │ │ ├── scripts/ 
-  │ │ ├── config/ 
-  │ │ └── fallback/ 
-  │ └── shared_env/ 
-  ├── packages/ 
-  ├── tools/ 
-  │   ├── promote_release.sh 
-  │   └── validate_symlinks.py 
-  ├── docs/ 
-  │   ├── README.md 
-  │   ├── release_checklist.md 
-  │   ├── promotion_policy.md 
-  │   └── rollback_procedure.md 
-
+<pre> /eic/opt/ ├── releases/ │ ├── development/ │ │ ├── bin/ │ │ ├── scripts/ │ │ ├── config/ │ │ └── fallback/ │ ├── commissioning/ │ │ ├── bin/ │ │ ├── scripts/ │ │ └── config/ │ ├── operational/ │ │ ├── bin/ │ │ ├── scripts/ │ │ ├── config/ │ │ └── fallback/ │ └── shared_env/ ├── packages/ ├── tools/ │ ├── promote_release.sh │ └── validate_symlinks.py ├── docs/ │ ├── README.md │ ├── release_checklist.md │ ├── promotion_policy.md │ └── rollback_procedure.md </pre>
 ---
 
 ## 🔁 Release Promotion Workflow
