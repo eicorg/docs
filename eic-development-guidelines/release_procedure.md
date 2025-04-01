@@ -8,7 +8,6 @@ It is intended to provide a clean, standardized, and intuitive foundation for ma
 
 ## 📁 Directory Structure
 
-<pre><code> 
   /eic/opt/ 
   ├── releases/ 
   │ ├── development/ 
@@ -35,7 +34,6 @@ It is intended to provide a clean, standardized, and intuitive foundation for ma
   │   ├── release_checklist.md 
   │   ├── promotion_policy.md 
   │   └── rollback_procedure.md 
-</code></pre>
 
 ---
 
