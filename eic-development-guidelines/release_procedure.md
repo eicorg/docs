@@ -53,7 +53,7 @@ Symlinks (e.g., `MyApp -> MyApp-1.2.3.shiv`) may be used in `bin/` to abstract v
 
 Full documentation is hosted on ReadTheDocs:
 
-🔗 https://eic.readthedocs.io/en/latest/
+🔗 https://eic.readthedocs.io/en/latest/eic-development-guidelines/release_procedure.html
 
 This directory (`/eic/opt/docs/`) includes essential local documentation for operators and system maintainers, especially useful in offline or emergency scenarios.
 
