@@ -61,17 +61,17 @@ O.*/
 
 - For each deployed IOC instance, we need to set TOP from `envPaths` and add `cd ${TOP}` at the beginning of the st.cmd file and `cd ${IOC}` at the end of the st.cmd file (before init call). We also need a `config` file for the `manage-iocs` utility.
 
-- On EIC VM, the central NFS directory for deployment is under `/eic/release/epics`. Under this NFS-mounted central directory, we have
+- On EIC VM, the central NFS directory for deployment is under `/eic/epics`. Under this NFS-mounted central directory, we have
 
 ```
 release
  └── epics
      ├── modules
      ├── iocs (aka iocBoot)
-     └── opi
+     └── apps
 ```
 
-- Inside the `iocs` and `opi` directories, new directories can be created that reflect the tree structure of the users or group. `iocs` is same as `iocBoot`. Here we just put each iocBoot instances. Both `iocs` and `opi` are hosted on GitHub at `https://github.com/eicorg/iocs` and `https://github.com/eicorg/opi` under the team controls/epics. The idea is individual IOC module or apps repository can have template iocBoot and OPI files. But all production iocBoot instances and OPI files are under version control from separate mono repositories. 
+- `iocs` is same as `iocBoot`. Here we just put each iocBoot instances. The `iocs` directory is also hosted on GitHub at `https://github.com/eicorg/iocs` under the team controls/epics. The idea is individual IOC module or apps repository can have template iocBoot and OPI files. But all production iocBoot instances and OPI files are under version control using separate mono repositories.  OPI screens are saved under individual ioc. 
 
 - If non-NFS deployment is preferred, use the `/epics/iocs` directory.
 
@@ -79,7 +79,7 @@ release
 
 - The IOCs are started/stopped/monitored using the `manage-iocs` utility or an user interface (on top of `manage-iocs`).
 
-- `manage-iocs` utility is configured to control IOCs under two locations `/epics/iocs` (local to the host) and `/eic/release/epics/iocs` (NFS mounted).
+- `manage-iocs` utility is configured to control IOCs under two locations `/epics/iocs` (local to the host) and `/eic/epics/iocs` (NFS mounted).
 
-- Check the deployed IOC examples under `/eic/release/epics/` and also the corresponding eicorg GitHub repositories for further details.
+- Check the deployed IOC examples under `/eic/epics/` and also the corresponding eicorg GitHub repositories for further details.
 
