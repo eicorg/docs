@@ -47,12 +47,12 @@ The following PVs are created by default for every server:
 
 Additional framework PVs are also added for control and monitoring:
 
-- `status`
-- `server`
-- `verbose`
-- `sleep`
-- `cycle`
-- `cycleTime`
+- `status`: Status and messages from the server. Errors, warnings and info are prefixed with `ERR_`, `WAR_` and `inf_` respectively.  
+- `server`: Accepts `Start`, `Stop`, `Exit` and `Clear` commands.
+- `verbose`: Defines debugging verbosity.
+- `sleep`: Devines pause in the main loop.
+- `cycle`: Polling cycle number.
+- `cycleTime`: Average cycle time including sleep.
 
 ## How PVs are defined
 
