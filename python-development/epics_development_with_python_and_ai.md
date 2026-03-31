@@ -2,7 +2,7 @@
 ## Why Python-based servers are essential for large EPICS installations.
 1. **Simplicity**. It is often simpler to generate server from scratch, than to deploy available IOC.
 - no dbRecords,
-- no iocShell, and procServers,
+- no iocShell,
 - AI automation: week work done in a day.
 2. **Easy deployment**.
 3. **Easy maintainace, modularity**: one server per device, separate servers for data processing, fewer nunmer of PCs.
