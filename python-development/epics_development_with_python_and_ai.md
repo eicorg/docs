@@ -102,7 +102,7 @@ Typical server startup flow:
 - Periodically triggers autosave when writable PVs were changed.
 - Returns `False` when a periodic-update boundary is reached.
 
-# AI examples using epicsdev.
+# AI-generated PVAccess servers.
 Fully AI-generated:
 - [epicsdev.putlog](https://github.com/ASukhanov/epicsdev/blob/main/epicsdev/putlog.py): 
 Fully functional caPutLog logger.
@@ -121,3 +121,11 @@ Fully-functional support of TEKTRONIX oscilloscopes.
 Support of LeCroy oscilloscopes.
 - [epicsdev.rhode](): 
 Support of Rohde&Schwartz oscilloscopes.
+
+# Differences in EPICS and ADO paradigms.
+1. EPICS tends to combine and compile many plugins into a single executable. In ADO a device usually publishes only device-specific parameters, other ADOs are processing them.
+2. PVs have have very limited set of standard features. There are no features like WRITABLE, ARCHIVABLE, DIAGNOSTIC and more.
+3. EPICS tends to expose tons of internal (non-essential) PVs.The ratio of non-essential/essetntial could be 10 or higher
+4. GETCODE functionality is not supported (prohibited) in EPICS.
+5. EPICS data transfer is much faster.
+ 
