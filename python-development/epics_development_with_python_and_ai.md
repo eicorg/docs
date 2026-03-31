@@ -5,7 +5,7 @@
 - no iocShell,
 - AI automation: week work done in a day.
 2. **Easy deployment**.
-3. **Easy maintainace, modularity**: one server per device, separate servers for data processing, fewer nunmer of PCs.
+3. **Easy maintainace, modularity**: one server per device, separate servers for data processing, fewer number of PCs.
 
 [p4p library](https://github.com/epics-base/p4p) (PVAccess for Python) is a Python wrapper that uses the C++ PVXS library to implement the EPICS PVAccess (PVA) client and server protocols. 
 
