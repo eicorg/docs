@@ -1,5 +1,5 @@
 # EPICS Device Development With Python, p4p and AI
-## Why Python-based servers are essential for large EPICS installations.
+## Why Python-based servers are essential for large EPICS facility like future EIC.
 1. **Simplicity**. It is often simpler to generate server from scratch, than to deploy available IOC.
 - no dbRecords,
 - no iocShell,
