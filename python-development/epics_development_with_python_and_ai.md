@@ -1,4 +1,12 @@
 # EPICS Device Development With Python, p4p and AI
+## Why Python-based servers are essential for large EPICS installations.
+1. **Simplicity**. It is often simpler to generate server from scratch, than to deploy available IOC.
+- no dbRecords,
+- no iocShell, and procServers,
+- AI automation: week work done in a day.
+2. **Easy deployment**.
+3. **Easy maintainace, modularity**: one server per device, separate servers for data processing, fewer nunmer of PCs.
+
 [p4p library](https://github.com/epics-base/p4p) (PVAccess for Python) is a Python wrapper that uses the C++ PVXS library to implement the EPICS PVAccess (PVA) client and server protocols. 
 
 It is the recommended Python interface for the modern PVAccess protocol.
@@ -111,7 +119,7 @@ Simple 2D multi-gaussian generator.
 
 AI-generated, human-assisted:
 - [epicsdev.imagegen](https://github.com/ASukhanov/epicsdev/blob/main/epicsdev/imagegen.py):
-Capable to host and update 100K of 100-point waveform PVs per second.
+Capable to host and update 10,000 of 100-point waveform PVs per second.
 - [epicsdev.multiadc](https://github.com/ASukhanov/epicsdev/blob/main/epicsdev/multiadc.py):
 - [epicsdev.rigol_scope](https://github.com/ASukhanov/epicsdev_rigol_scope):
 Fully-functional support of RIGOL oscilloscopes.
@@ -127,5 +135,5 @@ Support of Rohde&Schwartz oscilloscopes.
 2. PVs have have very limited set of standard features. There are no features like WRITABLE, ARCHIVABLE, DIAGNOSTIC and more.
 3. EPICS tends to expose tons of internal (non-essential) PVs.The ratio of non-essential/essetntial could be 10 or higher
 4. GETCODE functionality is not supported (prohibited) in EPICS.
-5. EPICS data transfer is much faster.
+5. EPICS data transfer is faster.
  
