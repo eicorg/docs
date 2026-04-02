@@ -10,6 +10,12 @@ Current users: 4<br>
 [Seth, Kyle, Latif, Andrey]<br>
 Monthly baseline cost: $76/month<br>
 This cost is predictable and does not increase with heavier usage.<br>
+----------------------------------------
+<b>Managing Users</b><br>
+User with administrative privileges on eicorg can go to their eicorg home page and select settings<br>
+Select "Copilot" on the left side and click on "Access"<br>
+Click the Add Seats button and enter the new user.<br>
+To remove a user select user and choose 'Cancel Seat' from the ellipse menu next to their name<br>
 ________________________________________
 <b>Risk of Unexpected Charges</b><br>
 Unexpected charges can only occur from:<br>
