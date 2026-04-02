@@ -6,11 +6,10 @@ Total cost = number of assigned users × $19 <br>
 There is no usage-based billing for standard Copilot features (e.g., number of prompts or completions).<br>
 ________________________________________
 <b>Current Cost Structure (April, 2026)</b><br>
-Current users: 4<br> 
-[Seth, Kyle, Latif, Andrey]<br>
+Current users: 4 (Seth, Kyle, Latif, Andrey)<br>
 Monthly baseline cost: $76/month<br>
 This cost is predictable and does not increase with heavier usage.<br>
-----------------------------------------
+________________________________________
 <b>Managing Users</b><br>
 User with administrative privileges on eicorg can go to their eicorg home page and select settings<br>
 Select "Copilot" on the left side and click on "Access"<br>
