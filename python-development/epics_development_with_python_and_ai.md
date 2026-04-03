@@ -4,7 +4,7 @@
 - no dbRecords,
 - no iocShell,
 - AI automation: week work done in a day.
-2. **Easy deployment**.
+2. **Easy deployment**: server is a Python script, the EPICS-base is encapsulated.
 3. **Easy maintainace, modularity**: one server per device, separate servers for data processing, PV namespace is less crowded.
 
 [p4p library](https://github.com/epics-base/p4p) (PVAccess for Python) is a Python wrapper that uses the C++ PVXS library to implement the EPICS PVAccess (PVA) client and server protocols. 
@@ -21,7 +21,6 @@ defining PVs and publishing values. This makes it practical to develop device su
 With `epicsdev`, most repetitive IOC plumbing is already implemented:
 
 - Common server PVs are created automatically.
-- Limits and metadata are attached from PV definitions.
 - Writable PVs automatically get a validated `put` handler.
 - Autosave and value recall are built in.
 - Optional put logging (`caPutLog`-style) is built in.
@@ -110,7 +109,32 @@ Typical server startup flow:
 - Periodically triggers autosave when writable PVs were changed.
 - Returns `False` when a periodic-update boundary is reached.
 
-# AI-generated PVAccess servers.
+# AI Automation
+Because all device logic lives in a small, well-structured Python file with a 
+predictable pattern, large-language-model (LLM) assistants such as GitHub 
+Copilot can replicate that pattern for any new instruments given only a 
+manufacturer's programming manual and the name of an existing `epicsdev`-based 
+server as a template. The workflow is:
+
+1. Create a new GitHub repository.
+2. Give the AI a prompt that references an existing server and a link to the 
+instrument's programming manual.
+3. The AI generates the complete server as a pull request.
+4. The developer reviews, runs a brief acceptance test, and merges.
+
+This framework has been tested over a six‑month period at the 
+Collider-Accelerator Complex at BNL, providing EPICS control and monitoring of 
+essential collider parameters.
+The AI-assisted approach was validated by creating PVAccess servers for various 
+oscilloscope brands (Tektronix, LeCroy, RIGOL). Support for hundreds of new 
+devices for new EIC collider is planned.
+The combination of `epicsdev`'s structured template and AI-assisted code 
+generation lowers the barrier for instrument integration, reduces development 
+time from weeks to days, and produces maintainable, idiomatic Python code that 
+follows consistent project conventions.
+
+## AI-generated PVAccess servers.
+
 Fully AI-generated:
 - [epicsdev.putlog](https://github.com/ASukhanov/epicsdev/blob/main/epicsdev/putlog.py): 
 Fully functional caPutLog logger.
@@ -119,7 +143,7 @@ Simple 2D multi-gaussian generator.
 
 AI-generated, human-assisted:
 - [epicsdev.imagegen](https://github.com/ASukhanov/epicsdev/blob/main/epicsdev/imagegen.py):
-Capable to host and update 10,000 of 100-point waveform PVs per second.
+Capable to host and update 50,000 of 1000-point 16-bit dynamic waveform PVs per second.
 - [epicsdev.multiadc](https://github.com/ASukhanov/epicsdev/blob/main/epicsdev/multiadc.py):
 - [epicsdev.rigol_scope](https://github.com/ASukhanov/epicsdev_rigol_scope):
 Fully-functional support of RIGOL oscilloscopes.
@@ -130,10 +154,7 @@ Support of LeCroy oscilloscopes.
 - [epicsdev.rhode](): 
 Support of Rohde&Schwartz oscilloscopes.
 
-# Differences in EPICS and ADO paradigms.
-1. EPICS tends to combine and compile many plugins into a single executable. In ADO a device usually publishes only device-specific parameters, other ADOs are processing them.
-2. PVs have have very limited set of standard features. There are no features like WRITABLE, ARCHIVABLE, DIAGNOSTIC and more.
-3. EPICS tends to expose tons of internal (non-essential) PVs.The ratio of non-essential/essetntial could be 10 or higher
-4. GETCODE functionality is not supported (prohibited) in EPICS.
-5. EPICS data transfer is faster.
- 
+# Differences in SoftIOC and PVAccess server paradigms.
+1. SoftIOC tends to combine and compile many plugins into a single executable. The PVAccess server usually publishes only device-specific parameters, other servers are processing them.
+2. SoftIOC tends to expose tons of internal (non-essential) PVs.The number of hosted PVs in similar PVAccess server usually is much smaller.
+
