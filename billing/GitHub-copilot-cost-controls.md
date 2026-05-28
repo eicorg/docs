@@ -5,9 +5,9 @@ $19 per user per month<br>
 Total cost = number of assigned users × $19 <br>
 There is no usage-based billing for standard Copilot features (e.g., number of prompts or completions).<br>
 ________________________________________
-<b>Current Cost Structure (April, 2026)</b><br>
-Current users: 4 (Seth, Kyle, Latif, Andrey)<br>
-Monthly baseline cost: $76/month<br>
+<b>Current Cost Structure (May, 2026)</b><br>
+Current users: 5 (Seth, Kyle, Latif, Andrey, Kunal)<br>
+Monthly baseline cost: $95/month<br>
 This cost is predictable and does not increase with heavier usage.<br>
 ________________________________________
 <b>Managing Users</b><br>
