@@ -6,8 +6,8 @@ Total cost = number of assigned users × $19 <br>
 There is no usage-based billing for standard Copilot features (e.g., number of prompts or completions).<br>
 ________________________________________
 <b>Current Cost Structure (May, 2026)</b><br>
-Current users: 5 (Seth, Kyle, Latif, Andrey, Kunal)<br>
-Monthly baseline cost: $95/month<br>
+Current users: 4 (Seth, Latif, Andrey, Kunal)<br>
+Monthly baseline cost: $76/month<br>
 This cost is predictable and does not increase with heavier usage.<br>
 ________________________________________
 <b>Managing Users</b><br>
@@ -40,7 +40,7 @@ Copilot budget set to: $75/month<br>
 This budget does not allow additional spending beyond the per-user subscription cost<br>
 It is used only for alerting and visibility, not enforcement<br>
 Important clarification:<br>
-Copilot charges are strictly determined by the number of users (e.g., 3 × $19 = $57)<br>
+Copilot charges are strictly determined by the number of users (e.g., 4 × $19 = $76)<br>
 The system cannot increase spending to $75 unless additional users are added<br>
 The $75 value is simply a monitoring threshold, not an approved spending limit<br>
 In other words:<br>
