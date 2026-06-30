@@ -1,12 +1,12 @@
 ## GitHub IOC Repository Structure
 
 - On GitHub, under the `eicorg` account, the IOCs are hosted under the controls/epics team. Here is the path: https://github.com/orgs/eicorg/teams/epics/repositories.
-- Any IOC repository name has the pattern: `ioc-<system name>`.
+- Any IOC repository name has the pattern: `<brand>-<type>-ioc`.
 
 - Before creating/pushing any IOC repository, ensure that you have the following directory structure:
 ```
 .
-└──ioc-<system name>
+└──<name>-ioc
     ├── configure
     ├── <system name>App
     ├── iocBoot
@@ -14,11 +14,11 @@
     └── .gitignore
 ```
 
-- Put all source code for the IOC inside `<system name>App` and startup files with OPIs under `iocBoot`.
+- Put all source code for the IOC inside `<name>App` and startup files with OPIs under `iocBoot`.
 
 - iocBoot can have template IOC configuration files and prototype OPI files.
 
-- A later version of iocBoot directory inside the IOC repository (on GitHub) can contain a version of cookiecutter (Jinja) compatible `st.cmd` and `config` files (for manage-iocs) so that it can be deployed using web/GUI for each user.
+- iocBoot directory inside the IOC repository (on GitHub) can contain `st.cmd` and `OPI` files using macros so that it can be deployed using web/GUI for each user.
 
 - The content of the `.gitignore` will look like the following one, so that all auto-generated files are excluded from the repository:
 ```
