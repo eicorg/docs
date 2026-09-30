@@ -1,4 +1,7 @@
 myst-parser[sphinx]
 sphinx==7.2.6
+sphinx-asciidoctrine==0.1.0a2
+asciidoctrine==0.2.0a8
+asciidocstring==0.1.0a11
 sphinx_rtd_theme==2.0.0
 readthedocs-sphinx-search==0.3.2

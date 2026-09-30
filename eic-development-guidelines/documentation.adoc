@@ -1,0 +1,49 @@
+= Documentation
+
+This guide explains how to add and maintain team documentation for EIC.
+
+== Project repository
+
+The source for the EIC documentation is hosted in GitHub:
+
+https://github.com/eicorg/docs[GitHub repository]
+
+== Preferred format
+
+Markdown (`.md`) is the preferred documentation format for most EIC content.
+It is easy to write, easy to read in GitHub, and works well with the Sphinx + MyST build used by this repository.
+
+Use Markdown for:
+
+* procedural docs
+* team notes and runbooks
+* lightweight reference material
+* content that should be easy to review in pull requests
+
+== AsciiDoc support
+
+AsciiDoc (`.adoc`) is supported for exceptional use cases where the document benefits from richer publishing features, such as advanced sectioning, attributes, or document-level structure.
+
+Use AsciiDoc sparingly and only when it adds clear value. If a page can be written clearly in Markdown, prefer Markdown.
+
+Typical AsciiDoc use cases include:
+
+* long-form documentation that needs more formal structure
+* content that requires richer cross-references or attributes
+* migration or compatibility docs where a more formal document layout is useful
+
+== Basic documentation expectations
+
+Keep these practices in mind for all docs:
+
+* Use clear titles and short sections.
+* Write for the reader who is new to the task.
+* Link to the relevant code, repository, or operational documentation.
+* Include commands, screenshots, or examples when they improve clarity.
+* Keep pages up to date when the process changes.
+
+== Summary
+
+For everyday team documentation, use Markdown.
+For specialized or exceptional cases, AsciiDoc is supported and acceptable.
+This keeps the documentation consistent while still allowing more formal documents when needed.
