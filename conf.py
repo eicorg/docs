@@ -30,16 +30,23 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = [
+    "myst_parser",
+    "sphinx_asciidoctrine",
+    "sphinx_rtd_theme",
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
-source_suffix = '.md'
+# You can specify multiple suffixes as a mapping of extension to markup name.
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".md": "markdown",
+    ".adoc": "asciidoc",
+    ".asciidoc": "asciidoc",
+}
 
 # The master toctree document.
 master_doc = 'index'
@@ -152,7 +159,5 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-# Support for Markdown
-extensions = ["myst_parser", "sphinx_rtd_theme"]
-source_suffix = ['.rst', '.md']
+# Support for Markdown and AsciiDoc
 html_theme = "sphinx_rtd_theme"
