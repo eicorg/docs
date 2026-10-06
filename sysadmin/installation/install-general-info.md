@@ -26,7 +26,7 @@ OU=EIC-CON,OU=EIC,OU=CCM,DC=bnl,DC=gov
 
 # The script usually fails and the ITD solution is to force manually joining to the domain
 ```
-/usr/sbin/adjoin -V -c "OU=EIC-CON,OU=EIC,OU=CCM,DC=bnl,DC=gov" --zone OU=EIC-CON,OU=EIC,OU=CCM,DC=bnl,DC=gov --user kkds  --force bnl.gov
+/usr/sbin/adjoin -V -c "OU=EIC-CON,OU=EIC,OU=CCM,DC=bnl,DC=gov" --zone OU=EIC-CON,OU=EIC,OU=CCM,DC=bnl,DC=gov --user eicadmin  --force bnl.gov
 ```
 
 ## now you should have a working centrify login!!
