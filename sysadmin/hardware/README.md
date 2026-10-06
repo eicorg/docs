@@ -48,7 +48,7 @@ The underlying storage setup backing datastore01 is unknown. There isn't any inf
 
 Note to self: When (if) the machine is ever rebooted, check and note raid setup via bios.
 
-## FPGA Development
+## Old 1-Node Proxmox Test Cluster / FPGA Development
 
 - OS: Proxmox version Virtual Environment 7.4-3
 - IP: 130.199.96.153
@@ -61,7 +61,7 @@ Note to self: When (if) the machine is ever rebooted, check and note raid setup 
 - Has 24 total slots for 2.5" hard drives in the front. 8 are currently in use.
 - BNL Barcode: 182517
 - SSH: Yes. But use web interface.
-- Web Interface: https://130.199.96.153:8006/
+- Web Interface: https://130.199.96.153:8006/  or https://containers01.c-ad.bnl.gov:8006/
 
 **Backup**  
 There is currently no backup...
@@ -84,10 +84,13 @@ zpool list
 pvesm list local-zfs
 pvesm list vm_disk_store
 
-Currently running 3 VMs:
-- fpgadev.eic
-- fpgadev02
-- kevindev01
+Currently VMs (by 10/06/2026):
+  - fpggdev01/02/03.eic.bnl.gov
+  - cpiocdev001.eic.bnl.gov
+  - docs.eic.bnl.gov
+  - hdb.eic.bnl.gov
+  - kevindev01 
+  
 
 ## Current Proxmox Test Cluster
 
