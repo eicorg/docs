@@ -108,11 +108,6 @@ Detailed setup documentation is here: https://github.com/eicorg/proxmox_eval
 - SSH: Yes. But use web interface.
 - Web Interface: https://prox01.eic.bnl.gov:8006, https://prox02.eic.bnl.gov:8006, https://prox03.eic.bnl.gov:8006
 
-**Backup**  
-https://proxbackup.eic.bnl.gov:8007
-
-A Proxmox backup server has been configured to back up the VMs from the test cluster.  
-Details: https://github.com/eicorg/proxmox_eval/blob/main/phase8-proxmox-backup-server.md
 
 ## Future Proxmox Test Cluster
 
@@ -131,13 +126,18 @@ One Powerful Server - HPE ProLiant DL380 Gen11, 8-SFF chassis
   - MAC Address:
 - Barcode: 00170373 
 
-Plus 5x Dell R70 Servers 
+Plus 4x Dell PowerEdge Servers 
 - CPU: 2x Intel Xeon Silver 4116 (12-core, 24-thread)
   https://www.intel.com/content/www/us/en/products/sku/120481/intel-xeon-silver-4116-processor-16-5m-cache-2-10-ghz/specifications.html
 - RAM: Each machine has 256 GB (8x 32GB modules)
 - Storage: Each machine as 4x 2.5" 250 GB Intel SSD drives. Additional drive bays are available for adding storage. Currently drives are JBOD, can be configured as raid.
 - Network: 4x 1GbE, and 4x 25GbE
 
+**Backup**  
+https://proxbackup.eic.bnl.gov:8007
+
+A Proxmox backup server to back up the VMs from the test cluster.  
+Details: https://github.com/eicorg/proxmox_eval/blob/main/phase8-proxmox-backup-server.md
 
 **Notes**  
 These machines are currently located in the first rack in the server room.
