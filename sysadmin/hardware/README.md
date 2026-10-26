@@ -116,12 +116,27 @@ Details: https://github.com/eicorg/proxmox_eval/blob/main/phase8-proxmox-backup-
 
 ## Future Proxmox Test Cluster
 
-- Hardware: 5x Dell R70 Servers
-- Storage: Each machine as 4x 2.5" 250 GB Intel SSD drives. Additional drive bays are available for adding storage. Currently drives are JBOD, can be configured as raid.
-- RAM: Each machine has 256 GB (8x 32GB modules)
+One Powerful Server - HPE ProLiant DL380 Gen11, 8-SFF chassis  
+- CPU: 2× Intel Xeon Platinum 8480+ (56 cores / 112 threads each); 112 cores / 224 threads total
+- RAM: 512 GB (16× 32 GB DDR5-4800 registered DIMMs) 
+- Storage:
+  - 4× 3.84 TB NVMe U.3 mixed-use SSDs — 15.36 TB raw capacity
+  - HPE NS204i-u Gen11 mirrored boot device; included drive configuration to verify on the server
+  - HPE MR932i-p Gen11 storage controller  
+- Network Interfaces:
+  - 2× Mellanox MCX623106AS dual-port 100 GbE QSFP56 adapters — 4× 100 GbE ports total
+  - 2× 100 Gb QSFP28 SR4 optical transceivers listed  
+  - MAC Address:
+- IP Address: 130.199.97.157  
+- Barcode: 00170373 
+
+Plus 5 5x Dell R70 Servers 
 - CPU: 2x Intel Xeon Silver 4116 (12-core, 24-thread)
   https://www.intel.com/content/www/us/en/products/sku/120481/intel-xeon-silver-4116-processor-16-5m-cache-2-10-ghz/specifications.html
+- RAM: Each machine has 256 GB (8x 32GB modules)
+- Storage: Each machine as 4x 2.5" 250 GB Intel SSD drives. Additional drive bays are available for adding storage. Currently drives are JBOD, can be configured as raid.
 - Network: 4x 1GbE, and 4x 25GbE
+- Details: https://github.com/eicorg/proxmox_production/edit/main/z-appendix-hardware-inventory.md
 
 **Notes**  
-These machines are currently located in the first rack in the server room. They are not currently connected to the network. 
+These machines are currently located in the first rack in the server room.
