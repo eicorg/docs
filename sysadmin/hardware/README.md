@@ -37,6 +37,9 @@ This is a SFF HP desktop that is currently (as of 8/4/26) sitting in the bottom 
 - Red asset tag: A114100
 - SSH: No. Use web interface.
 - Web Interface: https://130.199.97.3/ui/#/login
+- Currently VMs (by 10/28/2026):
+  <img width="1594" height="643" alt="image" src="https://github.com/user-attachments/assets/3ea54495-a0d8-45b9-8d1c-35a95136e648" />
+
 
 **Backup**  
 There is currently no backup...
@@ -84,7 +87,7 @@ zpool list
 pvesm list local-zfs
 pvesm list vm_disk_store
 
-Currently VMs (by 10/06/2026):
+Currently VMs (by 10/28/2026):
   - fpggdev01/02/03.eic.bnl.gov
   - cpiocdev001.eic.bnl.gov
   - docs.eic.bnl.gov
