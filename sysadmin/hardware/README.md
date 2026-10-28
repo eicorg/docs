@@ -92,52 +92,57 @@ Currently VMs (by 10/06/2026):
   - kevindev01 
   
 
-## Current Proxmox Test Cluster
+## Retired 3-Node Proxmox Evaluation Cluster
 
-The current Proxmox testing environment is a cluster of 3 machines. Below is a quick overview of basic hardware/configuration.  
+Retired October 28, 2026: All three hosts have been shut down. Their former hostnames, IP addresses, and web URLs are being reassigned to production servers. 
+
+The retired Proxmox Evaluation Cluster is a cluster of 3 machines. Below is a quick overview of basic hardware/configuration.  
 Detailed setup documentation is here: https://github.com/eicorg/proxmox_eval
 
 - OS: Proxmox version Virtual Environment 9.0.3
-- IP: 130.199.97.157, 130.199.97.115, 130.199.97.138
-- DNS: prox01.eic.bnl.gov, prox02.eic.bnl.gov, prox03.eic.bnl.gov
-- Hardware: 3x HP Z2 G5 SFF Desktop machines
+- IP : 130.199.97.157, 130.199.97.115, 130.199.97.138
+- DNS: prox01.eic.bnl.gov, prox02.eic.bnl.gov, prox03.eic.bnl.gov 
+- Hardware: 3x HP Z2 G5 SFF Desktop machines (https://github.com/eicorg/proxmox_eval/blob/main/z-appendix-hardware-inventory.md)
+  - Barcode: 00168732
+  - Barcode: 00168727
+  - Barcode: 00168728
 - CPU: Intel Core i7-10700 CPU @ 2.90GHz (8-core, 16-thread)  
   https://www.intel.com/content/www/us/en/products/sku/199316/intel-core-i710700-processor-16m-cache-up-to-4-80-ghz/specifications.html
 - RAM: 16GB
 - Storage: See: https://github.com/eicorg/proxmox_eval/blob/main/phase3-ceph-storage-setup.md
-- SSH: Yes. But use web interface.
-- Web Interface: https://prox01.eic.bnl.gov:8006, https://prox02.eic.bnl.gov:8006, https://prox03.eic.bnl.gov:8006
+- Administration: web interface and SSH
+- Web Interface : https://prox01.eic.bnl.gov:8006, https://prox02.eic.bnl.gov:8006, https://prox03.eic.bnl.gov:8006
 
 
-## Future Proxmox Test Cluster
+## 5-Node Proxmox Production Deployment — In Progress
 
-Details: https://github.com/eicorg/proxmox_production/edit/main/z-appendix-hardware-inventory.md  
+The planned deployment consists of five Proxmox VE nodes and one separate backup server. 
 
-One Powerful Server - HPE ProLiant DL380 Gen11, 8-SFF chassis  
-- CPU: 2× Intel Xeon Platinum 8480+ (56 cores / 112 threads each); 112 cores / 224 threads total
-- RAM: 512 GB (16× 32 GB DDR5-4800 registered DIMMs) 
-- Storage:
-  - 4× 3.84 TB NVMe U.3 mixed-use SSDs — 15.36 TB raw capacity
-  - HPE NS204i-u Gen11 mirrored boot device; included drive configuration to verify on the server
-  - HPE MR932i-p Gen11 storage controller  
-- Network Interfaces:
-  - 2× Mellanox MCX623106AS dual-port 100 GbE QSFP56 adapters — 4× 100 GbE ports total
-  - 2× 100 Gb QSFP28 SR4 optical transceivers listed  
-  - MAC Address:
-- Barcode: 00170373 
+**Proxmox Cluster**
+- OS: Proxmox version Virtual Environment 9.2.2
+- IP : 130.199.97.157, 130.199.97.115, 130.199.97.138, 130.199.97.169, 130.199.97.170  
+- DNS: prox01.eic.bnl.gov, prox02.eic.bnl.gov, prox03.eic.bnl.gov, prox04.eic.bnl.gov, prox05.eic.bnl.gov
+- Storage: https://github.com/eicorg/proxmox_production/blob/main/phase3-ceph-storage-setup.md  
+- Hardware: 1 HPE ProLiant DL380 Gen11 + 4x Dell PowerEdge Servers (Details: https://github.com/eicorg/proxmox_production/blob/main/z-appendix-hardware-inventory.md)
+  - 1 HPE ProLiant DL380 Gen11: CPU 112 cores, RAM 512 GB, Storage 4× 3.84 TB NVMe, Network 2× dual-port 100 GbE adapters — four 100 GbE ports total  
+    - Barcode: 00170373
+  - 4x Dell PowerEdge Servers: CPU: 24 cores, RAM 256GB, Storage 4× 240 GB SATA SSDs — 960 GB raw per server, Network 4x 1GbE, and 4x 25GbE
+    - Barcode: 00179371, 00180864, 00179372, 00180860
+- Administration: web interface and SSH
+  - https://prox01.eic.bnl.gov:8006
+  - https://prox02.eic.bnl.gov:8006
+  - https://prox03.eic.bnl.gov:8006
+  - https://prox04.eic.bnl.gov:8006
+  - https://prox05.eic.bnl.gov:8006  
 
-Plus 4x Dell PowerEdge Servers 
-- CPU: 2x Intel Xeon Silver 4116 (12-core, 24-thread)
-  https://www.intel.com/content/www/us/en/products/sku/120481/intel-xeon-silver-4116-processor-16-5m-cache-2-10-ghz/specifications.html
-- RAM: Each machine has 256 GB (8x 32GB modules)
-- Storage: Each machine as 4x 2.5" 250 GB Intel SSD drives. Additional drive bays are available for adding storage. Currently drives are JBOD, can be configured as raid.
-- Network: 4x 1GbE, and 4x 25GbE
-
-**Backup**  
-https://proxbackup.eic.bnl.gov:8007
-
-A Proxmox backup server to back up the VMs from the test cluster.  
-Details: https://github.com/eicorg/proxmox_eval/blob/main/phase8-proxmox-backup-server.md
+**Backup Server**  
+- Details: https://github.com/eicorg/proxmox_eval/blob/main/phase8-proxmox-backup-server.md
+- IP: 130.199.97.168
+- DNS: proxbackup.eic.bnl.gov
+- Hardware: 1 Dell PowerEdge Servers: CPU: 24 cores, RAM 256GB, Storage 4x 2.5" 250 GB Intel SSD drives, Network 4x 1GbE, and 4x 25GbE
+- Barcode: 00179373
+- Web Interface:
+  - https://proxbackup.eic.bnl.gov:8007
 
 **Notes**  
 These machines are currently located in the first rack in the server room.
