@@ -41,11 +41,15 @@ Create a hardware RAID 1 virtual disk using the Dell PERC configuration utility.
 - Confirm that it contains only the two intended OS disks.
 - Check virtual disk health and initialization status.
 
-**Change Operation Mode from RAID to eHBA on a Dell Server**  
+---
+
+## Change Operation Mode from RAID to eHBA on a Dell Server  
 
 Changing the operating mode of the Dell PERC RAID controller to eHBA. This operating mode allows for the creation of RAID0, RAID1, and RAID10 Virtual Disks. Any disks not part of an array will be presented to the Operating System as a stand alone disk. 
 
 Having direct access to disk is ideal for Ceph Storage implementations.
+
+Note: HBA mode does not allow for creation of RAID5 or RAID6 arrays.
 
 > **Warning:** Switching modes requires clearing the existing controller configuration. This will delete existing data on **all** disks. Confirm the server service tag, disk identities, and that any required data has been preserved before proceeding.
 
