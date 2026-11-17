@@ -4,9 +4,11 @@
 
 If you do not want to create a GitHub repository, skip to step 3 in this section.
 
+If you have cloned an exiting epicsdev-based repository, then activate python environment using `uv sync` and go to **Test run** section.
+
 1. Create a repository under the `eicorg` GitHub organization. The usual naming convention for epicsdev-based servers is:
 
-   `epicsdev_<hardware_type>__<manufacturer>_<model>`
+   `epicsdev_<hardware_type>_<manufacturer>_<model>`
 
    Example: `epicsdev_ps_caen_fastps`
 
