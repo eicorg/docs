@@ -26,14 +26,14 @@
 
 ## Ansible Roles
 
-- https://github.com/eicorg/proxmox_eval/tree/main/ansible/roles/setup_gnome_os
-- https://github.com/eicorg/proxmox_eval/tree/main/ansible/roles/add_user_to_gnome
+- https://github.com/eicorg/ansible-sys/tree/main/roles/setup_gnome_os
+- https://github.com/eicorg/ansible-sys/tree/main/roles/add_user_to_gnome
 
  
 ## Reference (CAD Documentation)
 
-- https://www.cadops.bnl.gov/Controls/doc/SA/RH96/RH96-Documents/doc-desktopGnome/gnome-configure-os.html  
-- https://www.cadops.bnl.gov/Controls/doc/SA/RH96/RH96-Documents/doc-desktopGnome/gnome-configure-normaluser.html  
+- https://www.cadops.bnl.gov/Controls/doc/SA/RH97/RH97-Documents/doc-desktopGnome/gnome-configure-os.html  
+- https://www.cadops.bnl.gov/Controls/doc/SA/RH97/RH97-Documents/doc-desktopGnome/gnome-configure-normaluser.html  
 
 ----
 
