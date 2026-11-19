@@ -1,3 +1,12 @@
+# EIC Servers Using SSL Certificate List
+
+- ansible
+- proxmox
+- kasm
+- cdb
+- hdb
+- demo04
+
 # EIC SSL certificate Generation and Placement
 
 The wildcard belongs inside the CSR’s Common Name and Subject Alternative Name (SAN).    
