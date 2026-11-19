@@ -33,7 +33,7 @@ X509v3 Subject Alternative Name:
 
 ----
 
-**I. Host: `cdb.eic.bnl.gov` **
+# Example Host: `cdb.eic.bnl.gov`
 
 Service: Nginx 
 
