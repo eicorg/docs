@@ -33,7 +33,7 @@ X509v3 Subject Alternative Name:
 
 ----
 
-# Example Host: `cdb.eic.bnl.gov`
+# Example Host 1: `cdb.eic.bnl.gov`
 
 Service: Nginx 
 
@@ -130,3 +130,122 @@ nginx -t && systemctl reload nginx
 ```
 
 Repeat live verification after rollback. The old certificate may still have the trust issue that prompted replacement.
+
+
+----
+
+# Example Host 2: `ansible.eic.bnl.gov`
+
+Doc Reference:  
+https://github.com/eicorg/ansible-sys/blob/main/docs/z-appendix-api-ansible.md   
+Step 8 - Configure Ansible AWX - Certificate
+
+## 1. Confirm the TLS Secret
+
+```bash
+cd /home/eicuser/awx-on-k3s
+
+kubectl get ingress awx-ingress -n awx \
+  -o jsonpath='{.spec.tls}{"\n"}'
+```
+
+Confirm the ingress references `awx-secret-tls` for `ansible.eic.bnl.gov`.
+
+## 2. Validate the Wildcard Certificate
+
+Check validity and hostname coverage:
+
+```bash
+openssl x509 -in /eic/data/ssl/wildcard.eic.bnl.gov.crt \
+  -noout -dates -checkhost ansible.eic.bnl.gov
+```
+
+Confirm the certificate and private key match:
+
+```bash
+openssl x509 -in /eic/data/ssl/wildcard.eic.bnl.gov.crt \
+  -pubkey -noout | openssl sha256
+
+openssl pkey -in /eic/data/ssl/wildcard.eic.bnl.gov.key \
+  -pubout | openssl sha256
+```
+
+The two SHA256 values must be identical.
+
+> The certificate file must contain the server certificate first,
+> followed by the intermediate certificates in chain order.
+
+## 3. Back Up the Existing Configuration
+
+The secret backup contains the private key; keep it accessible only to root.
+
+```bash
+umask 077
+TLS_BACKUP_DIR=$(mktemp -d /root/awx-tls-backup.XXXXXX)
+
+kubectl get secret awx-secret-tls -n awx -o yaml \
+  > "$TLS_BACKUP_DIR/awx-secret-tls.yaml"
+
+cp -p base/tls.crt base/tls.key "$TLS_BACKUP_DIR/"
+
+echo "Backup location: $TLS_BACKUP_DIR"
+```
+
+## 4. Update the Local Certificate Files
+
+Keep the deployment files consistent with the live certificate:
+
+```bash
+install -m 644 /eic/data/ssl/wildcard.eic.bnl.gov.crt base/tls.crt
+install -m 600 /eic/data/ssl/wildcard.eic.bnl.gov.key base/tls.key
+```
+
+Do not commit the private key to Git.
+
+## 5. Update the Kubernetes TLS Secret
+
+Update the existing secret without deleting it:
+
+```bash
+kubectl create secret tls awx-secret-tls -n awx \
+  --cert=base/tls.crt \
+  --key=base/tls.key \
+  --dry-run=client -o yaml | kubectl apply -f -
+```
+
+Expected result:
+
+```text
+secret/awx-secret-tls configured
+```
+
+If Kubernetes reports a missing `last-applied-configuration` annotation,
+it will add the annotation automatically.
+
+Traefik loads the updated certificate automatically; no AWX or k3s restart
+is normally required.
+
+## 6. Verify HTTPS
+
+Check the certificate served by the web interface:
+
+```bash
+openssl s_client \
+  -connect ansible.eic.bnl.gov:443 \
+  -servername ansible.eic.bnl.gov </dev/null 2>/dev/null |
+  openssl x509 -noout -subject -issuer -dates -ext subjectAltName
+```
+
+Confirm:
+
+- The certificate covers `ansible.eic.bnl.gov` through `*.eic.bnl.gov`.
+- The issuer and validity dates match the installed wildcard certificate.
+- [https://ansible.eic.bnl.gov](https://ansible.eic.bnl.gov) opens without a certificate warning.
+- AWX login works.
+
+> **Renewal recorded on November 19, 2026:**  
+> Issuer: `SSL.com TLS Issuing RSA CA R1`  
+> Expiration: `May 29, 2027`  
+> Repeat this procedure when ITD provides the next wildcard certificate.
+
+---
