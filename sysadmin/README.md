@@ -8,9 +8,15 @@ Documentation and content will continue to evolve as new systems, procedures, an
 
 ## Related Repositories
 
-- **proxmox_eval** – Evaluation and documentation for Proxmox VE, Ceph, Proxmox Backup Server (PBS), and related infrastructure.
+- **ansible-sys** – Active Ansible playbooks, roles, and inventory synchronization scripts for EIC system configuration and AWX automation.
+  - https://github.com/eicorg/ansible-sys
+
+- **proxmox_production** – Setup, configuration, and operational documentation for the EIC Proxmox production cluster, Ceph storage, VM deployment automation, and Proxmox Backup Server.
+  - https://github.com/eicorg/proxmox_production
+
+- **proxmox_eval** – Original Proxmox evaluation documentation and automation examples.
   - https://github.com/eicorg/proxmox_eval
-  - *Note: The `ansible/` directory in this repository contains the active Ansible playbooks used by the EIC Proxmox environment and is maintained there.*
+  - *The original `ansible/` directory is preserved for reference. Active Ansible development and AWX integration now use `ansible-sys`.*
 
 - **kasm_eval** – Evaluation and documentation for Kasm Workspaces.
   - https://github.com/eicorg/kasm_eval
