@@ -1,7 +1,7 @@
 # EIC Servers Using SSL Certificate List
 
 - ansible
-- proxmox
+- proxmox (prox01/02/03/04/05)
 - kasm
 - cdb
 - hdb
@@ -135,7 +135,7 @@ Repeat live verification after rollback. The old certificate may still have the 
 ----
 
 # Example Host 2: `ansible.eic.bnl.gov`
-
+  
 Doc Reference:  
 https://github.com/eicorg/ansible-sys/blob/main/docs/z-appendix-api-ansible.md   
 Step 8 - Configure Ansible AWX - Certificate
@@ -249,3 +249,31 @@ Confirm:
 > Repeat this procedure when ITD provides the next wildcard certificate.
 
 ---
+
+# Example Host 3: `prox01.eic.bnl.gov`
+
+Doc Reference:  
+https://github.com/eicorg/proxmox_production/blob/main/phase1-setup-installation.md   
+11. Install Trusted TLS Certificate   
+
+Follow existing procedure on prox01–prox05, copying the new certificate and matching key to /root/ on each node.   
+
+For replacement, use:
+
+~~~bash
+pvenode cert set \
+  /root/wildcard.eic.bnl.gov.crt \
+  /root/wildcard.eic.bnl.gov.key \
+  --force 1 --restart 1
+~~~
+
+Then verify on each node:
+
+~~~bash
+openssl s_client \
+  -connect "$(hostname -f):8006" \
+  -servername "$(hostname -f)" </dev/null 2>/dev/null |
+  openssl x509 -noout -subject -issuer -dates
+~~~
+
+----
